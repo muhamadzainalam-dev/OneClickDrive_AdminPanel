@@ -8,11 +8,16 @@ This is a **custom-built admin dashboard** created as part of the **Frontend Dev
 
 ---
 
-## 📸 Preview
+## 📸 Preview Image
 
 ![Dashboard](public/screenshots/dashboard.png)
 ![Login](public/screenshots/login.png)
 ![Edit Modal](public/screenshots/edit-modal.png)
+
+---
+
+## 📸 Preview Video
+<video controls src="public/1.mp4" title="Video"></video>
 
 ---
 
