@@ -18,8 +18,8 @@ export default function Dashboard() {
 
   const notify = () =>
     toast(
-      <div className="flex justify-center items-center">
-        <IoMdThumbsUp className="inline mr-2 text-green-500 text-xl" />
+      <div className="flex items-center">
+        <IoMdThumbsUp className="mr-2 text-green-500 text-xl" />
         Info Successfully Updated
       </div>
     );
@@ -54,12 +54,11 @@ export default function Dashboard() {
 
   return (
     <motion.div
-      className="min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300 p-4 sm:p-6 text-gray-900 dark:text-gray-100"
+      className="min-h-screen bg-gray-100 dark:bg-gray-900 p-4 sm:p-6 text-gray-900 dark:text-gray-100"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
     >
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8 border border-gray-700 rounded-2xl p-4 bg-gradient-to-l from-gray-900 to-gray-800 shadow-md">
         <div className="flex items-center gap-4">
           <img
@@ -74,13 +73,12 @@ export default function Dashboard() {
         <button
           onClick={handleLogout}
           disabled={isLoggingOut}
-          className="bg-red-500 hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 py-2 rounded text-sm font-medium transition min-w-[90px]"
+          className="bg-red-500 hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 py-2 rounded text-sm font-medium min-w-[90px]"
         >
           {isLoggingOut ? <div className="loader" /> : "Logout"}
         </button>
       </div>
 
-      {/* Table */}
       <div className="w-full overflow-x-auto rounded-xl shadow-lg bg-white dark:bg-gray-800">
         <table className="w-full min-w-[800px] text-sm">
           <thead className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase tracking-wider text-xs">
@@ -116,101 +114,100 @@ export default function Dashboard() {
             <AnimatePresence>
               {[...listings]
                 .filter(
-                  (listing) =>
-                    statusFilter === "all" || listing.status === statusFilter
+                  (item) =>
+                    statusFilter === "all" || item.status === statusFilter
                 )
                 .sort((a, b) => {
-                  const order = { pending: 1, approved: 2, rejected: 3 };
-                  return order[a.status] - order[b.status];
+                  const priority = { pending: 1, approved: 2, rejected: 3 };
+                  return priority[a.status] - priority[b.status];
                 })
-                .map((listing, index) => (
+                .map((item, index) => (
                   <motion.tr
-                    key={listing.id}
+                    key={item.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.03 }}
-                    className="border-t dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                    className="border-t dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"
                   >
                     <td className="px-6 py-3">{index + 1}</td>
-                    <td className="px-6 py-3 font-medium">{listing.title}</td>
-                    <td className="px-6 py-3">{listing.owner}</td>
+                    <td className="px-6 py-3 font-medium">{item.title}</td>
+                    <td className="px-6 py-3">{item.owner}</td>
                     <td className="px-6 py-3 hidden sm:table-cell">
-                      {listing.price}
+                      {item.price}
                     </td>
                     <td className="px-6 py-3 hidden sm:table-cell">
-                      {listing.location}
+                      {item.location}
                     </td>
                     <td className="px-6 py-3">
                       <span
                         className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                          listing.status === "approved"
+                          item.status === "approved"
                             ? "bg-green-100 text-green-700 dark:bg-green-700 dark:text-white"
-                            : listing.status === "rejected"
+                            : item.status === "rejected"
                             ? "bg-red-100 text-red-600 dark:bg-red-600 dark:text-white"
                             : "bg-yellow-500 text-yellow-700 dark:bg-yellow-600 dark:text-white"
                         }`}
                       >
-                        {listing.status}
+                        {item.status}
                       </span>
                     </td>
                     <td className="px-1 py-3">
                       <div className="flex flex-wrap md:flex-nowrap items-center gap-2">
-                      <button
-                        onClick={async () => {
-                          setLoadingAction({ id: listing.id, type: "approve" });
-                          const updated = { ...listing, status: "approved" };
-                          await fetch(`/pages/api/listings/${listing.id}`, {
-                            method: "PUT",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify(updated),
-                          });
-                          await fetchListings();
-                          setLoadingAction({ id: null, type: null });
-                          notify();
-                        }}
-                        className="bg-green-600 hover:bg-green-500 text-white text-xs px-3 py-1 rounded transition"
-                      >
-                        {loadingAction.id === listing.id &&
-                        loadingAction.type === "approve" ? (
-                          <div className="loader" />
-                        ) : (
-                          "Approve"
-                        )}
-                      </button>
+                        <button
+                          onClick={async () => {
+                            setLoadingAction({ id: item.id, type: "approve" });
+                            const updated = { ...item, status: "approved" };
+                            await fetch(`/pages/api/listings/${item.id}`, {
+                              method: "PUT",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify(updated),
+                            });
+                            await fetchListings();
+                            setLoadingAction({ id: null, type: null });
+                            notify();
+                          }}
+                          className="bg-green-600 hover:bg-green-500 text-white text-xs px-3 py-1 rounded transition"
+                        >
+                          {loadingAction.id === item.id &&
+                          loadingAction.type === "approve" ? (
+                            <div className="loader" />
+                          ) : (
+                            "Approve"
+                          )}
+                        </button>
 
-                      <button
-                        onClick={async () => {
-                          setLoadingAction({ id: listing.id, type: "reject" });
-                          const updated = { ...listing, status: "rejected" };
-                          await fetch(`/pages/api/listings/${listing.id}`, {
-                            method: "PUT",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify(updated),
-                          });
-                          await fetchListings();
-                          setLoadingAction({ id: null, type: null });
-                          notify();
-                        }}
-                        className="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 rounded transition"
-                      >
-                        {loadingAction.id === listing.id &&
-                        loadingAction.type === "reject" ? (
-                          <div className="loader" />
-                        ) : (
-                          "Reject"
-                        )}
-                      </button>
+                        <button
+                          onClick={async () => {
+                            setLoadingAction({ id: item.id, type: "reject" });
+                            const updated = { ...item, status: "rejected" };
+                            await fetch(`/pages/api/listings/${item.id}`, {
+                              method: "PUT",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify(updated),
+                            });
+                            await fetchListings();
+                            setLoadingAction({ id: null, type: null });
+                            notify();
+                          }}
+                          className="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 rounded transition"
+                        >
+                          {loadingAction.id === item.id &&
+                          loadingAction.type === "reject" ? (
+                            <div className="loader" />
+                          ) : (
+                            "Reject"
+                          )}
+                        </button>
 
-                      <button
-                        onClick={() => handleEdit(listing)}
-                        className="bg-cyan-500 hover:bg-cyan-600 text-white text-xs px-3 py-1 rounded transition"
-                      >
-                        Edit
-                      </button>
+                        <button
+                          onClick={() => handleEdit(item)}
+                          className="bg-cyan-500 hover:bg-cyan-600 text-white text-xs px-3 py-1 rounded transition"
+                        >
+                          Edit
+                        </button>
                       </div>
                     </td>
-                    
                   </motion.tr>
                 ))}
             </AnimatePresence>
@@ -218,7 +215,6 @@ export default function Dashboard() {
         </table>
       </div>
 
-      {/* Modal */}
       <AnimatePresence>
         {isEditOpen && editingListing && (
           <motion.div
@@ -243,71 +239,35 @@ export default function Dashboard() {
               <h2 className="text-xl font-bold mb-4">Edit Listing</h2>
 
               <div className="space-y-4">
-                {/* Title */}
-                <div>
-                  <label className="block mb-1">Car</label>
-                  <input
-                    type="text"
-                    value={editingListing.title}
-                    onChange={(e) =>
-                      setEditingListing({
-                        ...editingListing,
-                        title: e.target.value,
-                      })
-                    }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                  />
-                </div>
+                <InputField
+                  label="Car"
+                  value={editingListing.title}
+                  onChange={(val) =>
+                    setEditingListing({ ...editingListing, title: val })
+                  }
+                />
+                <InputField
+                  label="Owner"
+                  value={editingListing.owner}
+                  onChange={(val) =>
+                    setEditingListing({ ...editingListing, owner: val })
+                  }
+                />
+                <InputField
+                  label="Price"
+                  value={editingListing.price}
+                  onChange={(val) =>
+                    setEditingListing({ ...editingListing, price: val })
+                  }
+                />
+                <InputField
+                  label="Location"
+                  value={editingListing.location}
+                  onChange={(val) =>
+                    setEditingListing({ ...editingListing, location: val })
+                  }
+                />
 
-                {/* Owner */}
-                <div>
-                  <label className="block mb-1">Owner</label>
-                  <input
-                    type="text"
-                    value={editingListing.owner}
-                    onChange={(e) =>
-                      setEditingListing({
-                        ...editingListing,
-                        owner: e.target.value,
-                      })
-                    }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                  />
-                </div>
-
-                {/* Price */}
-                <div>
-                  <label className="block mb-1">Price</label>
-                  <input
-                    type="text"
-                    value={editingListing.price}
-                    onChange={(e) =>
-                      setEditingListing({
-                        ...editingListing,
-                        price: e.target.value,
-                      })
-                    }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                  />
-                </div>
-
-                {/* Location */}
-                <div>
-                  <label className="block mb-1">Location</label>
-                  <input
-                    type="text"
-                    value={editingListing.location}
-                    onChange={(e) =>
-                      setEditingListing({
-                        ...editingListing,
-                        location: e.target.value,
-                      })
-                    }
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
-                  />
-                </div>
-
-                {/* Status */}
                 <div>
                   <label className="block mb-1">Status</label>
                   <select
@@ -366,5 +326,19 @@ export default function Dashboard() {
         transition={Bounce}
       />
     </motion.div>
+  );
+}
+
+function InputField({ label, value, onChange }) {
+  return (
+    <div>
+      <label className="block mb-1">{label}</label>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white"
+      />
+    </div>
   );
 }

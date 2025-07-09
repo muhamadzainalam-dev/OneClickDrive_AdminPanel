@@ -13,7 +13,6 @@ export default function LoginPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // Check if user is already logged in on mount
     const loggedIn = localStorage.getItem("isLoggedIn");
     if (loggedIn === "true") {
       router.push("/pages/Dashboard");
@@ -30,7 +29,7 @@ export default function LoginPage() {
       localStorage.setItem("isLoggedIn", "true");
       setIsLoggedIn(true);
       setError("");
-      router.push("/pages/Dashboard"); // immediate redirect after login
+      router.push("/pages/Dashboard");
     } else {
       setError("Invalid username or password");
     }
@@ -44,7 +43,6 @@ export default function LoginPage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-2xl w-[90vw] max-w-[450px] p-8"
       >
-        {/* Logo and Heading */}
         <motion.div
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -64,7 +62,6 @@ export default function LoginPage() {
           </p>
         </motion.div>
 
-        {/* Login Form */}
         <form onSubmit={handleLogin} className="space-y-5">
           <motion.input
             type="text"
