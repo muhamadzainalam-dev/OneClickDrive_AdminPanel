@@ -10,9 +10,9 @@ This is a **custom-built admin dashboard** created as part of the **Frontend Dev
 
 ## 📸 Preview Image
 
-![Dashboard](public/screenshots/dashboard.png)
-![Login](public/screenshots/login.png)
-![Edit Modal](public/screenshots/edit-modal.png)
+![Login](public//login.png)
+![Dashboard](public//dashboard.png)
+![Edit Modal](public//edit-modal.png)
 
 ---
 
