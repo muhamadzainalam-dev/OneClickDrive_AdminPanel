@@ -16,11 +16,6 @@ This is a **custom-built admin dashboard** created as part of the **Frontend Dev
 
 ---
 
-## 📸 Preview Video
-<video controls src="public/1.mp4" title="Video"></video>
-
----
-
 ## 🔐 Admin Login (Mock Auth)
 
 ```txt
