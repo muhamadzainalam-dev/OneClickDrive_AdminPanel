@@ -2,13 +2,13 @@
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![SQLite](https://img.shields.io/badge/SQLite-3-003B57?style=for-the-badge&logo=sqlite)](https://sqlite.org/)
 
 A modern, responsive admin dashboard for managing car rental listings with real-time updates, smooth animations, and comprehensive CRUD operations. Built as part of a **Frontend Developer (Next.js)** assessment.
 
-> 📅 **Submission Date:** July 09, 2025  
+> 📅 **Submitted Date:** July 10, 2025  
 > 🧑‍💻 **Position:** Frontend Developer (Next.js)  
 > ✅ **100% Hand-coded** – No AI-generated code was used in this project
 
@@ -34,8 +34,7 @@ Password: admin123
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/nextjs-admin-dashboard
-   cd nextjs-admin-dashboard
+   git clone https://github.com/muhamadzainalam-dev/Admin-Dashboard.git
    ```
 
 2. **Install dependencies**
@@ -96,7 +95,7 @@ Password: admin123
 ### Frontend Stack
 - **Next.js 14** (App Router + API Routes)
 - **React 18** with Hooks and Context API
-- **TypeScript** for type safety
+- **JavaScript** 
 - **Tailwind CSS** for utility-first styling
 - **Framer Motion** for animations
 - **React Toastify** for notifications
@@ -110,42 +109,6 @@ Password: admin123
 ### Development Tools
 - **ESLint** for code quality
 - **Prettier** for code formatting
-- **Husky** for Git hooks (if configured)
-
----
-
-## 📁 Project Structure
-
-```
-nextjs-admin-dashboard/
-├── 📁 app/
-│   ├── 📁 api/
-│   │   └── 📁 listings/
-│   │       └── [id]/
-│   │           └── route.ts
-│   ├── 📁 dashboard/
-│   │   └── page.tsx
-│   ├── 📁 login/
-│   │   └── page.tsx
-│   ├── layout.tsx
-│   └── page.tsx
-├── 📁 components/
-│   ├── Dashboard/
-│   ├── Login/
-│   └── UI/
-├── 📁 lib/
-│   ├── database.ts
-│   └── auth.ts
-├── 📁 public/
-│   ├── login.png
-│   ├── dashboard.png
-│   └── edit-modal.png
-├── 📁 scripts/
-│   └── seed.js
-├── 📁 types/
-│   └── index.ts
-└── 📄 README.md
-```
 
 ---
 
@@ -153,9 +116,8 @@ nextjs-admin-dashboard/
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| `GET` | `/api/listings` | Fetch all car listings |
-| `PUT` | `/api/listings/[id]` | Update listing details |
-| `PATCH` | `/api/listings/[id]/status` | Update listing status |
+| `GET` | `/pages/api/listings` | Fetch all car listings |
+| `PUT` | `/pages/api/listings/[id]` | Update listing details |
 
 ---
 
@@ -165,7 +127,7 @@ nextjs-admin-dashboard/
 - ✅ Login/Logout functionality
 - ✅ Dashboard data loading and pagination
 - ✅ CRUD operations (Create, Read, Update, Delete)
-- ✅ Status filtering and search
+- ✅ Status filtering
 - ✅ Responsive design across devices
 - ✅ Error handling and edge cases
 
@@ -176,27 +138,6 @@ nextjs-admin-dashboard/
 - **Lazy Loading** for improved performance
 
 ---
-
-## 🔧 Configuration Options
-
-### Environment Variables
-Create a `.env.local` file in the root directory:
-
-```env
-# Database Configuration
-DATABASE_URL=./database.db
-
-# Application Settings
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-### Customization
-- **Styling:** Modify `tailwind.config.js` for custom design tokens
-- **Database:** Update `lib/database.ts` for different database providers
-- **Authentication:** Extend `lib/auth.ts` for production-ready auth
-
----
-
 ## 🚧 Future Enhancements
 
 ### Planned Features
@@ -232,13 +173,7 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ## 🤝 Contributing
 
-This project was created for assessment purposes, but if you'd like to contribute:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+This project was created for assessment purposes.
 
 ---
 
@@ -254,8 +189,8 @@ This project is created exclusively for assessment purposes. All code is origina
 Frontend Developer | React.js & Next.js Enthusiast
 
 [![Email](https://img.shields.io/badge/Email-muhamadzainalam.dev@gmail.com-red?style=for-the-badge&logo=gmail)](mailto:muhamadzainalam.dev@gmail.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/your-profile)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/your-username)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/muhamadzain-dev/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github)](https://github.com/muhamadzainalam-dev)
 
 ---
 
