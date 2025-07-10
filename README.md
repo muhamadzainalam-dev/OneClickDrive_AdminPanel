@@ -14,11 +14,17 @@ A modern, responsive admin dashboard for managing car rental listings with real-
 
 ---
 
-## 📸 Application Preview
+## 📸 Application Preview Image
 
 | Login Page | Dashboard Overview | Edit Modal |
 |------------|-------------------|------------|
 | ![Login](public/login.png) | ![Dashboard](public/dashboard.png) | ![Edit Modal](public/edit-modal.png) |
+
+---
+
+## 📸 Application Preview Video
+
+🎥 [![Watch the video](public/dashboard.png)](https://youtu.be/-V7Zpo9yW4o)
 
 ---
 
